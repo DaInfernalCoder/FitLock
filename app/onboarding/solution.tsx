@@ -1,4 +1,9 @@
-import { StyleSheet, View, ScrollView } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  TouchableOpacity as RNTouchableOpacity,
+} from 'react-native';
 import { useRouter } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -10,19 +15,32 @@ export default function SolutionScreen() {
   const router = useRouter();
 
   const handleNext = () => {
-    router.push('/onboarding/features');
+    console.log('🔍 [Solution Screen] Show Me How button pressed');
+    console.log(
+      '🔍 [Solution Screen] Attempting to navigate to /onboarding/features'
+    );
+    try {
+      router.push('/onboarding/features');
+      console.log('🔍 [Solution Screen] Navigation call completed');
+    } catch (error) {
+      console.error('🔍 [Solution Screen] Navigation failed:', error);
+    }
   };
 
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView 
-          style={styles.scroll} 
+        <ScrollView
+          style={styles.scroll}
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.header}>
-            <MaterialCommunityIcons name="lightbulb-on" size={48} color="#0A7EA4" />
+            <MaterialCommunityIcons
+              name="lightbulb-on"
+              size={48}
+              color="#0A7EA4"
+            />
             <ThemedText type="title" style={styles.title}>
               Introducing a Better Way
             </ThemedText>
@@ -33,25 +51,38 @@ export default function SolutionScreen() {
               Your App's Core Value
             </ThemedText>
             <ThemedText style={styles.mainDescription}>
-              One clear, powerful sentence that explains exactly how you solve the user's problem.
+              One clear, powerful sentence that explains exactly how you solve
+              the user's problem.
             </ThemedText>
           </View>
 
           <View style={styles.benefits}>
             <View style={styles.benefit}>
-              <MaterialCommunityIcons name="check-circle" size={24} color="#0A7EA4" />
+              <MaterialCommunityIcons
+                name="check-circle"
+                size={24}
+                color="#0A7EA4"
+              />
               <ThemedText style={styles.benefitText}>
                 Key benefit or feature that solves their pain
               </ThemedText>
             </View>
             <View style={styles.benefit}>
-              <MaterialCommunityIcons name="check-circle" size={24} color="#0A7EA4" />
+              <MaterialCommunityIcons
+                name="check-circle"
+                size={24}
+                color="#0A7EA4"
+              />
               <ThemedText style={styles.benefitText}>
                 Another important advantage of your solution
               </ThemedText>
             </View>
             <View style={styles.benefit}>
-              <MaterialCommunityIcons name="check-circle" size={24} color="#0A7EA4" />
+              <MaterialCommunityIcons
+                name="check-circle"
+                size={24}
+                color="#0A7EA4"
+              />
               <ThemedText style={styles.benefitText}>
                 A third compelling reason to use your app
               </ThemedText>
@@ -60,11 +91,17 @@ export default function SolutionScreen() {
         </ScrollView>
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={handleNext}>
+          <RNTouchableOpacity
+            style={styles.button}
+            onPress={handleNext}
+            onPressIn={() =>
+              console.log('🔍 [Solution Screen] Button press detected')
+            }
+          >
             <ThemedText type="defaultSemiBold" style={styles.buttonText}>
               Show Me How
             </ThemedText>
-          </TouchableOpacity>
+          </RNTouchableOpacity>
         </View>
       </SafeAreaView>
     </ThemedView>
@@ -141,4 +178,4 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
   },
-}); 
+});

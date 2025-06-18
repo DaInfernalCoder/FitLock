@@ -1,0 +1,61 @@
+# Task ID: 4
+# Title: Implement Phone Blocking Mechanism
+# Status: pending
+# Dependencies: 2
+# Priority: high
+# Description: Develop a system to block access to specified apps until a workout is completed.
+# Details:
+Research and implement a solution for app blocking on both iOS and Android. This may involve using react-native-device-apps to detect installed apps and react-native-background-fetch for periodic checks. For actual blocking, you might need to use native modules or explore OS-level capabilities. Ensure the implementation adheres to app store guidelines. Store the list of apps to be blocked in Supabase and sync it locally.
+
+# Test Strategy:
+Thoroughly test the blocking mechanism on both iOS and Android. Verify that specified apps are blocked and unblocked correctly. Test edge cases like app termination and device restart.
+
+# Subtasks:
+## 1. Research App Blocking Feasibility on iOS and Android [pending]
+### Dependencies: None
+### Description: Investigate the technical and policy feasibility of blocking or restricting apps on iOS and Android, including OS-level restrictions and privacy concerns.
+### Details:
+Review official documentation, developer forums, and app store guidelines to determine what is possible and allowed on each platform.
+
+## 2. Investigate Methods to Detect Installed Apps [pending]
+### Dependencies: 4.1
+### Description: Explore available APIs and techniques for detecting installed apps on both iOS and Android platforms.
+### Details:
+Determine what information can be accessed about installed apps, considering privacy and OS restrictions.
+
+## 3. Design and Implement Background App Checks [pending]
+### Dependencies: 4.2
+### Description: Develop a mechanism to periodically check for the presence or activity of blocked apps in the background.
+### Details:
+Account for platform-specific background execution limitations and battery/performance considerations.
+
+## 4. Develop Native Modules if Required [pending]
+### Dependencies: 4.3
+### Description: Create custom native modules for iOS and Android if existing APIs do not provide the necessary functionality.
+### Details:
+Assess the need for native code based on feasibility and detection research; implement modules as needed.
+
+## 5. Integrate Supabase for Blocked App List Storage [pending]
+### Dependencies: 4.4
+### Description: Set up Supabase to securely store and manage the list of blocked apps for each user.
+### Details:
+Design the schema and implement secure access patterns for reading and updating the blocked app list.
+
+## 6. Implement Local Sync of Blocked Apps [pending]
+### Dependencies: 4.5
+### Description: Develop logic to sync the blocked app list from Supabase to the device and keep it updated locally.
+### Details:
+Ensure efficient and reliable synchronization, handling offline scenarios and data consistency.
+
+## 7. Review and Ensure App Store Compliance [pending]
+### Dependencies: None
+### Description: Analyze and address compliance with Apple App Store and Google Play Store policies regarding app blocking and privacy.
+### Details:
+Prepare documentation and make necessary adjustments to avoid rejection during app review.
+
+## 8. Test Edge Cases: App Termination and Device Restart [pending]
+### Dependencies: None
+### Description: Thoroughly test the solution for robustness against edge cases such as app termination, device restart, and background limitations.
+### Details:
+Simulate various scenarios to ensure the blocking mechanism remains effective and reliable.
+

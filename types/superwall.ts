@@ -7,4 +7,4 @@ export interface SuperwallConfig {
     logging?: boolean;
     paywallTimeout?: number;
   };
-} 
+}

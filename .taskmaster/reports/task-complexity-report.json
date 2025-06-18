@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "generatedAt": "2025-06-18T18:39:57.786Z",
+    "tasksAnalyzed": 12,
+    "totalTasks": 12,
+    "analysisCount": 12,
+    "thresholdScore": 5,
+    "projectName": "Taskmaster",
+    "usedResearch": true
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Setup React Native Project with Expo",
+      "complexityScore": 4,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the setup process into subtasks such as: installing prerequisites (Node.js, npm, Expo CLI), initializing the Expo project, creating the folder structure, initializing Git and .gitignore, installing dependencies (react-navigation, async-storage), and configuring ESLint/Prettier.",
+      "reasoning": "This is a foundational task with moderate complexity, involving several setup steps that are well-documented but require attention to detail. Each step is distinct and can be parallelized or assigned separately for clarity and efficiency.[2][3][5]"
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Implement User Authentication with Supabase",
+      "complexityScore": 6,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Expand into subtasks: install and configure Supabase, create sign-up screen, create sign-in screen, implement email/password auth, implement social auth, store session in AsyncStorage, implement token refresh logic.",
+      "reasoning": "Authentication involves multiple flows (email/password, social), secure storage, and session management, each requiring careful implementation and testing. Integrating with Supabase adds additional configuration and error handling complexity."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "Design and Implement User Onboarding Flow",
+      "complexityScore": 5,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Subdivide into: design onboarding UI, implement multi-step form, collect workout experience, collect referral info, collect contact details, store onboarding data in Supabase.",
+      "reasoning": "While onboarding is a common feature, the multi-step form, data validation, and integration with Supabase add moderate complexity. UI/UX design and navigation between steps also require attention."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Implement Phone Blocking Mechanism",
+      "complexityScore": 9,
+      "recommendedSubtasks": 8,
+      "expansionPrompt": "Break into: research app blocking feasibility on iOS/Android, detect installed apps, implement background checks, develop native modules if needed, store blocked app list in Supabase, sync blocked apps locally, handle app store compliance, test edge cases (termination, restart).",
+      "reasoning": "This task is highly complex due to OS-level restrictions, need for native code, compliance with app store policies, and robust testing across platforms. Research and custom native development are likely required."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Integrate RevenueCat for Subscription Management",
+      "complexityScore": 7,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Expand into: install RevenueCat SDK, configure API keys, implement subscription plans, create subscription UI, handle purchase flow, validate receipts, sync subscription status with Supabase.",
+      "reasoning": "Subscription management involves third-party SDK integration, handling payments, UI for plans, receipt validation, and syncing with backend, each with its own set of challenges and required testing."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Implement AI-Driven Workout Plan Generation",
+      "complexityScore": 8,
+      "recommendedSubtasks": 8,
+      "expansionPrompt": "Divide into: implement 2D human model UI, integrate muscle group selection, develop/integrate AI workout generator, connect to ExerciseDB API, fetch exercise media, store plans in Supabase, implement offline caching, test plan quality.",
+      "reasoning": "This task combines advanced UI, AI integration, third-party APIs, data storage, and offline support, making it technically demanding and requiring careful coordination between components."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Develop Workout Execution and Logging Functionality",
+      "complexityScore": 7,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Break down into: design workout execution screens, implement exercise details display, create timer component, implement set/reps logging, sync logs with Supabase, cache data offline, test offline/real-time sync.",
+      "reasoning": "Workout execution involves real-time UI, state management, offline/online sync, and integration with backend, each requiring robust implementation and testing."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Implement Progress Tracking and Calendar View",
+      "complexityScore": 6,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Expand into: integrate calendar library, fetch workout history, display history on calendar, implement streak tracking, create daily summary view, test UI responsiveness.",
+      "reasoning": "Progress tracking and calendar views are moderately complex, involving data visualization, UI integration, and logic for streaks and summaries."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Integrate Apple Health for iOS",
+      "complexityScore": 5,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Subdivide into: install react-native-health, implement read operations, implement write operations, handle permissions and privacy, sync health data with Supabase.",
+      "reasoning": "Apple Health integration is limited to iOS and involves permissions, data mapping, and syncing, but is well-supported by libraries, making it less complex than cross-platform or AI tasks."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Implement Superwall for Paywall Management",
+      "complexityScore": 6,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break into: install Superwall SDK, configure account, design paywall variations, implement paywall triggers, integrate analytics tracking, test RevenueCat integration.",
+      "reasoning": "Paywall management involves SDK integration, UI/UX design, analytics, and coordination with subscription logic, each requiring focused implementation and testing."
+    },
+    {
+      "taskId": 11,
+      "taskTitle": "Implement Offline Mode and Data Syncing",
+      "complexityScore": 8,
+      "recommendedSubtasks": 8,
+      "expansionPrompt": "Expand into: choose offline storage solution, implement local data storage, develop sync mechanism, handle conflict resolution, implement background sync, test offline scenarios, test sync on reconnect, handle edge cases.",
+      "reasoning": "Offline mode and syncing are technically challenging, requiring robust data handling, conflict resolution, background processing, and comprehensive testing for reliability."
+    },
+    {
+      "taskId": 12,
+      "taskTitle": "Perform Security Audit and Optimization",
+      "complexityScore": 9,
+      "recommendedSubtasks": 9,
+      "expansionPrompt": "Divide into: audit authentication flows, audit data storage, audit API communications, implement secure storage, optimize performance (lazy loading, re-renders), optimize images, implement app loading improvements, conduct penetration testing, profile app performance.",
+      "reasoning": "A full security audit and optimization is highly complex, requiring expertise in security, performance, and cross-cutting concerns across the entire app, with multiple areas needing specialized attention."
+    }
+  ]
+}

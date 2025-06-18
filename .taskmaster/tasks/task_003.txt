@@ -1,0 +1,11 @@
+# Task ID: 3
+# Title: Design and Implement User Onboarding Flow
+# Status: pending
+# Dependencies: 2
+# Priority: high
+# Description: Create screens for user onboarding to collect workout experience, referral information, and contact details.
+# Details:
+Design onboarding screens using React Native elements or a UI kit like React Native Paper. Implement a multi-step form to collect user data (workout experience, referral source, phone number, email). Store collected data in Supabase using the supabase-js client. Use React Navigation to manage the flow between onboarding screens.
+
+# Test Strategy:
+Create unit tests for each onboarding step. Implement integration tests to ensure data is correctly stored in Supabase. Test the flow on different device sizes to ensure responsiveness.

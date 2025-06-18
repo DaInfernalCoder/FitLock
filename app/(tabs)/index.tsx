@@ -6,6 +6,7 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useSuperwall } from '@/hooks/useSuperwall';
+import { useSupabaseAuth } from '@/hooks/useSupabaseAuth';
 import { useOnboarding } from '@/contexts/OnboardingContext';
 import { useRouter } from 'expo-router';
 import { SUPERWALL_TRIGGERS } from '@/config/superwall';
@@ -13,6 +14,7 @@ import { SUPERWALL_TRIGGERS } from '@/config/superwall';
 export default function HomeScreen() {
   const { setIsOnboarded } = useOnboarding();
   const { showPaywall } = useSuperwall();
+  const { user, isAuthenticated, initialized, loading } = useSupabaseAuth();
   const router = useRouter();
 
   const handleRestartOnboarding = async () => {
@@ -24,6 +26,26 @@ export default function HomeScreen() {
     showPaywall(SUPERWALL_TRIGGERS.ONBOARDING);
   };
 
+  const handleTestSupabase = () => {
+    console.log('🔍 Supabase Test Results:');
+    console.log('- Initialized:', initialized);
+    console.log('- Loading:', loading);
+    console.log('- Is Authenticated:', isAuthenticated);
+    console.log('- User:', user);
+    console.log(
+      '- Supabase URL configured:',
+      process.env.EXPO_PUBLIC_SUPABASE_URL ? '✅' : '❌'
+    );
+    console.log(
+      '- Supabase Key configured:',
+      process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ? '✅' : '❌'
+    );
+
+    alert(
+      `Supabase Status:\n\n✅ Initialized: ${initialized}\n🔄 Loading: ${loading}\n🔐 Authenticated: ${isAuthenticated}\n👤 User: ${user ? 'Logged in' : 'Not logged in'}\n\nCheck console for full details!`
+    );
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -32,7 +54,8 @@ export default function HomeScreen() {
           source={require('@/assets/images/partial-react-logo.png')}
           style={styles.reactLogo}
         />
-      }>
+      }
+    >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
@@ -40,13 +63,14 @@ export default function HomeScreen() {
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
+          Edit{' '}
+          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{' '}
+          to see changes. Press{' '}
           <ThemedText type="defaultSemiBold">
             {Platform.select({
               ios: 'cmd + d',
               android: 'cmd + m',
-              web: 'F12'
+              web: 'F12',
             })}
           </ThemedText>{' '}
           to open developer tools.
@@ -55,20 +79,22 @@ export default function HomeScreen() {
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 2: Explore</ThemedText>
         <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
+          Tap the Explore tab to learn more about what's included in this
+          starter app.
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
         <ThemedText>
           When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
+          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{' '}
+          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{' '}
+          directory. This will move the current{' '}
           <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
-      
+
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={handleShowPaywall}>
           <ThemedText type="defaultSemiBold" style={styles.buttonText}>
@@ -76,7 +102,19 @@ export default function HomeScreen() {
           </ThemedText>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.button, styles.secondaryButton]} onPress={handleRestartOnboarding}>
+        <TouchableOpacity
+          style={[styles.button, styles.testButton]}
+          onPress={handleTestSupabase}
+        >
+          <ThemedText type="defaultSemiBold" style={styles.buttonText}>
+            🧪 Test Supabase Connection
+          </ThemedText>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.button, styles.secondaryButton]}
+          onPress={handleRestartOnboarding}
+        >
           <ThemedText type="defaultSemiBold" style={styles.secondaryButtonText}>
             Restart Onboarding
           </ThemedText>
@@ -115,6 +153,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
+  },
+  testButton: {
+    backgroundColor: '#10B981',
   },
   secondaryButton: {
     backgroundColor: '#0A7EA420',

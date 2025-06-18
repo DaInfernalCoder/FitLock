@@ -22,17 +22,30 @@ export default function FinalScreen() {
     }
   };
 
+  const handleSkipForNow = async () => {
+    console.log('Skipping onboarding for development');
+    setIsOnboarded(true);
+  };
+
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
+        <ScrollView
+          style={styles.scroll}
+          contentContainerStyle={styles.scrollContent}
+        >
           <View style={styles.header}>
-            <MaterialCommunityIcons name="rocket-launch" size={48} color="#0A7EA4" />
+            <MaterialCommunityIcons
+              name="rocket-launch"
+              size={48}
+              color="#0A7EA4"
+            />
             <ThemedText type="title" style={styles.title}>
               Start Building Today
             </ThemedText>
             <ThemedText style={styles.description}>
-              You're all set to create your next great app. Get started now and save weeks of development time!
+              You're all set to create your next great app. Get started now and
+              save weeks of development time!
             </ThemedText>
           </View>
 
@@ -48,12 +61,24 @@ export default function FinalScreen() {
             Get Started Now
           </ThemedText>
         </TouchableOpacity>
+
+        <TouchableOpacity style={styles.skipButton} onPress={handleSkipForNow}>
+          <ThemedText type="defaultSemiBold" style={styles.skipButtonText}>
+            Skip for Now (Dev)
+          </ThemedText>
+        </TouchableOpacity>
       </SafeAreaView>
     </ThemedView>
   );
 }
 
-function Benefit({ icon, text }: { icon: keyof typeof IconType.glyphMap; text: string }) {
+function Benefit({
+  icon,
+  text,
+}: {
+  icon: keyof typeof IconType.glyphMap;
+  text: string;
+}) {
   return (
     <View style={styles.benefitContainer}>
       <View style={styles.iconContainer}>
@@ -122,10 +147,22 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     marginHorizontal: 24,
-    marginBottom: 16,
+    marginBottom: 8,
   },
   buttonText: {
     color: 'white',
     fontSize: 18,
   },
-}); 
+  skipButton: {
+    backgroundColor: '#6B7280',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginHorizontal: 24,
+    marginBottom: 16,
+  },
+  skipButtonText: {
+    color: 'white',
+    fontSize: 14,
+  },
+});

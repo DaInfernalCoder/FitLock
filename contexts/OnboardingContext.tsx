@@ -7,11 +7,17 @@ type OnboardingContextType = {
   setIsOnboarded: (value: boolean) => void;
 };
 
-const OnboardingContext = createContext<OnboardingContextType | undefined>(undefined);
+const OnboardingContext = createContext<OnboardingContextType | undefined>(
+  undefined
+);
 
 const STORAGE_KEY = 'hasCompletedOnboarding';
 
-export function OnboardingProvider({ children }: { children: React.ReactNode }) {
+export function OnboardingProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [isOnboarded, setIsOnboarded] = useState<boolean | null>(null);
   const segments = useSegments();
   const router = useRouter();
@@ -56,7 +62,8 @@ export function OnboardingProvider({ children }: { children: React.ReactNode }) 
       value={{
         isOnboarded: isOnboarded ?? false,
         setIsOnboarded: handleSetIsOnboarded,
-      }}>
+      }}
+    >
       {children}
     </OnboardingContext.Provider>
   );
@@ -68,4 +75,4 @@ export function useOnboarding() {
     throw new Error('useOnboarding must be used within an OnboardingProvider');
   }
   return context;
-} 
+}

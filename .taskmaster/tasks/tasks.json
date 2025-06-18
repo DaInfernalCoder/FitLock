@@ -1,0 +1,749 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Setup React Native Project with Expo",
+        "description": "Initialize the React Native project using Expo CLI and set up the basic project structure.",
+        "status": "done",
+        "dependencies": [],
+        "priority": "high",
+        "details": "The React Native project has been successfully set up using Expo CLI with the following configuration:\n\n- Project structure includes folders for components, app, services, hooks, contexts, constants, and assets\n- Git repository initialized with appropriate .gitignore file\n- Essential dependencies installed including React Navigation (v7.x.x) and AsyncStorage\n- TypeScript configured for type safety\n- ESLint configured using Expo's built-in configuration\n- Prettier installed and configured with appropriate React Native settings\n- Format scripts added to package.json (npm run format, npm run format:check)",
+        "testStrategy": "Project has been verified by:\n- Running the app in Expo Go on both iOS and Android simulators\n- Confirming all dependencies are correctly installed\n- Verifying the app builds without errors\n- Running ESLint (only 2 minor warnings, no errors)\n- Testing Prettier formatting functionality",
+        "subtasks": [
+          {
+            "id": "1.1",
+            "title": "Initialize Expo project with proper structure",
+            "status": "completed"
+          },
+          {
+            "id": "1.2",
+            "title": "Initialize Git repository with .gitignore",
+            "status": "completed"
+          },
+          {
+            "id": "1.3",
+            "title": "Install essential dependencies (React Navigation v7.x.x, AsyncStorage)",
+            "status": "completed"
+          },
+          {
+            "id": "1.4",
+            "title": "Configure TypeScript",
+            "status": "completed"
+          },
+          {
+            "id": "1.5",
+            "title": "Set up project folder structure (components, app, services, hooks, contexts, constants, assets)",
+            "status": "completed"
+          },
+          {
+            "id": "1.6",
+            "title": "Configure ESLint using Expo's built-in configuration",
+            "status": "completed"
+          },
+          {
+            "id": "1.7",
+            "title": "Install and configure Prettier with React Native settings",
+            "status": "completed"
+          },
+          {
+            "id": "1.8",
+            "title": "Add format scripts to package.json",
+            "status": "completed"
+          },
+          {
+            "id": "1.9",
+            "title": "Verify project setup and dependencies",
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Implement User Authentication with Supabase",
+        "description": "Set up Supabase for user authentication and implement sign-up and sign-in flows.",
+        "details": "Install @supabase/supabase-js (latest version) and configure it with your Supabase project credentials. Implement sign-up and sign-in screens using React Native elements. Use Supabase Auth methods for email/password and social authentication. Store user session in AsyncStorage for persistence. Implement a secure token refresh mechanism.",
+        "testStrategy": "Create test cases for successful and failed sign-up/sign-in attempts. Verify token storage and refresh mechanism. Test social auth integrations if implemented.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Install and Configure Supabase",
+            "description": "Set up a new Supabase project, obtain API keys, and integrate the Supabase client SDK into the application. Configure environment variables for secure access.",
+            "dependencies": [],
+            "details": "Follow Supabase documentation to create a project, retrieve the project URL and anon/public key, and add them to your app's environment configuration. Initialize the Supabase client in your codebase.\n<info added on 2025-06-18T19:26:48.154Z>\nSuccessfully completed Supabase installation and configuration:\n\n✅ **Installation Complete:**\n- Installed @supabase/supabase-js (latest version)\n- Installed expo-constants for environment variable access\n- Installed @react-native-async-storage/async-storage for session persistence\n\n✅ **Configuration Setup:**\n- Added Supabase environment variables to .env and .env.example files:\n  - EXPO_PUBLIC_SUPABASE_URL\n  - EXPO_PUBLIC_SUPABASE_ANON_KEY\n- Created config/supabase.ts with robust configuration including:\n  - Environment variable validation with clear error messages\n  - Supabase client creation with optimal auth settings\n  - Auto refresh tokens, session persistence, and proper web detection\n  - Exported constants for auth events and storage keys\n\n✅ **Service Layer Implementation:**\n- Created services/supabase.ts following existing project patterns:\n  - Singleton service pattern matching superwallService\n  - Comprehensive authentication methods (signUp, signIn, signOut, resetPassword)\n  - Session management with AsyncStorage persistence\n  - Auth state listener system for real-time updates\n  - Proper error handling and logging throughout\n  - TypeScript interfaces for type safety\n\n✅ **React Hook Integration:**\n- Created hooks/useSupabaseAuth.ts following existing project patterns:\n  - Manages authentication state (user, session, loading, initialized)\n  - Provides computed states (isAuthenticated, isEmailConfirmed)\n  - Exposes all auth methods with proper error handling\n  - Uses useCallback for performance optimization\n  - Handles cleanup with unsubscribe functions\n\n✅ **App Integration:**\n- Updated app/_layout.tsx to initialize supabaseAuthService alongside superwallService\n- Follows existing initialization patterns for consistency\n- Platform-specific initialization (skips web like superwall)\n\n✅ **Technical Details:**\n- All files compile successfully with TypeScript\n- Used relative imports to resolve path mapping issues\n- Followed existing code patterns and project structure\n- Comprehensive error handling and logging\n- Session persistence across app restarts\n- Automatic token refresh mechanism\n\nThe Supabase client is now fully configured and ready for authentication flows.\n</info added on 2025-06-18T19:26:48.154Z>",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "Create Sign-Up Screen",
+            "description": "Design and implement a user interface for new users to register using email and password.",
+            "dependencies": [
+              1
+            ],
+            "details": "Build a form that collects email and password, validates input, and triggers the Supabase sign-up API. Handle and display errors from the API.",
+            "status": "in-progress"
+          },
+          {
+            "id": 3,
+            "title": "Create Sign-In Screen",
+            "description": "Design and implement a user interface for existing users to log in using email and password.",
+            "dependencies": [
+              1
+            ],
+            "details": "Build a form for email and password input, validate credentials, and call the Supabase sign-in API. Display authentication errors as needed.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Implement Email/Password Authentication",
+            "description": "Integrate Supabase email/password authentication logic into the sign-up and sign-in screens.",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Use Supabase client methods to handle user registration and login. Ensure proper error handling and user feedback for both flows.",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Implement Social Authentication",
+            "description": "Enable social login providers (e.g., Google, GitHub) using Supabase Auth.",
+            "dependencies": [
+              1
+            ],
+            "details": "Configure social providers in the Supabase dashboard and update the UI to allow users to authenticate via social accounts. Integrate with Supabase's social auth API.",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Store Session in AsyncStorage",
+            "description": "Persist user session tokens securely using AsyncStorage to maintain authentication state across app restarts.",
+            "dependencies": [
+              4,
+              5
+            ],
+            "details": "On successful authentication, store the session/token in AsyncStorage. Retrieve and validate the session on app launch.",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Implement Token Refresh Logic",
+            "description": "Ensure the app can refresh expired authentication tokens using Supabase's refresh mechanism.",
+            "dependencies": [],
+            "details": "Monitor token expiration and use Supabase's refresh API to obtain new tokens as needed. Update AsyncStorage with refreshed tokens and handle refresh failures gracefully.",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Design and Implement User Onboarding Flow",
+        "description": "Create screens for user onboarding to collect workout experience, referral information, and contact details.",
+        "details": "Design onboarding screens using React Native elements or a UI kit like React Native Paper. Implement a multi-step form to collect user data (workout experience, referral source, phone number, email). Store collected data in Supabase using the supabase-js client. Use React Navigation to manage the flow between onboarding screens.",
+        "testStrategy": "Create unit tests for each onboarding step. Implement integration tests to ensure data is correctly stored in Supabase. Test the flow on different device sizes to ensure responsiveness.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Implement Phone Blocking Mechanism",
+        "description": "Develop a system to block access to specified apps until a workout is completed.",
+        "details": "Research and implement a solution for app blocking on both iOS and Android. This may involve using react-native-device-apps to detect installed apps and react-native-background-fetch for periodic checks. For actual blocking, you might need to use native modules or explore OS-level capabilities. Ensure the implementation adheres to app store guidelines. Store the list of apps to be blocked in Supabase and sync it locally.",
+        "testStrategy": "Thoroughly test the blocking mechanism on both iOS and Android. Verify that specified apps are blocked and unblocked correctly. Test edge cases like app termination and device restart.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Research App Blocking Feasibility on iOS and Android",
+            "description": "Investigate the technical and policy feasibility of blocking or restricting apps on iOS and Android, including OS-level restrictions and privacy concerns.",
+            "dependencies": [],
+            "details": "Review official documentation, developer forums, and app store guidelines to determine what is possible and allowed on each platform.",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Investigate Methods to Detect Installed Apps",
+            "description": "Explore available APIs and techniques for detecting installed apps on both iOS and Android platforms.",
+            "dependencies": [
+              1
+            ],
+            "details": "Determine what information can be accessed about installed apps, considering privacy and OS restrictions.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Design and Implement Background App Checks",
+            "description": "Develop a mechanism to periodically check for the presence or activity of blocked apps in the background.",
+            "dependencies": [
+              2
+            ],
+            "details": "Account for platform-specific background execution limitations and battery/performance considerations.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Develop Native Modules if Required",
+            "description": "Create custom native modules for iOS and Android if existing APIs do not provide the necessary functionality.",
+            "dependencies": [
+              3
+            ],
+            "details": "Assess the need for native code based on feasibility and detection research; implement modules as needed.",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Integrate Supabase for Blocked App List Storage",
+            "description": "Set up Supabase to securely store and manage the list of blocked apps for each user.",
+            "dependencies": [
+              4
+            ],
+            "details": "Design the schema and implement secure access patterns for reading and updating the blocked app list.",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Implement Local Sync of Blocked Apps",
+            "description": "Develop logic to sync the blocked app list from Supabase to the device and keep it updated locally.",
+            "dependencies": [
+              5
+            ],
+            "details": "Ensure efficient and reliable synchronization, handling offline scenarios and data consistency.",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Review and Ensure App Store Compliance",
+            "description": "Analyze and address compliance with Apple App Store and Google Play Store policies regarding app blocking and privacy.",
+            "dependencies": [],
+            "details": "Prepare documentation and make necessary adjustments to avoid rejection during app review.",
+            "status": "pending"
+          },
+          {
+            "id": 8,
+            "title": "Test Edge Cases: App Termination and Device Restart",
+            "description": "Thoroughly test the solution for robustness against edge cases such as app termination, device restart, and background limitations.",
+            "dependencies": [],
+            "details": "Simulate various scenarios to ensure the blocking mechanism remains effective and reliable.",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Integrate RevenueCat for Subscription Management",
+        "description": "Set up RevenueCat SDK and implement subscription plans for premium features.",
+        "details": "Install react-native-purchases (RevenueCat SDK) and configure it with your RevenueCat API keys. Implement subscription plans as defined in the PRD. Create screens for displaying subscription options and handling purchases. Implement receipt validation and subscription status checks. Store subscription status in Supabase for server-side verification.",
+        "testStrategy": "Test the full subscription flow, including successful and failed purchases. Verify that premium features are correctly unlocked after subscription. Test receipt validation and subscription status persistence.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Install RevenueCat SDK",
+            "description": "Integrate the RevenueCat SDK into your project for your target platform (iOS, Android, Web, etc.).",
+            "dependencies": [],
+            "details": "Follow the official RevenueCat installation guides for your platform. For example, use npm or yarn for web, or follow platform-specific instructions for mobile apps.",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Configure RevenueCat API Keys",
+            "description": "Initialize and configure the RevenueCat SDK with your public API key and any required user identifiers.",
+            "dependencies": [
+              1
+            ],
+            "details": "Retrieve the appropriate API keys from the RevenueCat dashboard under Project Settings > API keys. Configure the SDK early in your app lifecycle, ensuring you use platform-specific keys if needed.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Implement Subscription Plans in RevenueCat",
+            "description": "Define and configure your subscription products and entitlements in the RevenueCat dashboard.",
+            "dependencies": [
+              2
+            ],
+            "details": "Set up your subscription offerings, products, and entitlements in RevenueCat to match your app's business logic and available plans.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Create Subscription UI",
+            "description": "Design and implement the user interface for displaying available subscription plans and purchase options.",
+            "dependencies": [
+              3
+            ],
+            "details": "Build a UI that fetches and displays subscription offerings from RevenueCat, allowing users to select and initiate purchases.",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Handle Purchase Flow",
+            "description": "Implement the logic to initiate and complete subscription purchases using the RevenueCat SDK.",
+            "dependencies": [
+              4
+            ],
+            "details": "Use RevenueCat SDK methods to start the purchase process, handle user actions, and respond to purchase outcomes (success, failure, cancellation).",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Validate Receipts",
+            "description": "Ensure that purchase receipts are validated and entitlements are granted based on successful transactions.",
+            "dependencies": [
+              5
+            ],
+            "details": "Leverage RevenueCat's backend validation to confirm purchase authenticity and update user entitlements accordingly.",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Sync Subscription Status with Supabase",
+            "description": "Integrate logic to synchronize subscription status and entitlements from RevenueCat to your Supabase backend.",
+            "dependencies": [],
+            "details": "Implement webhook listeners or periodic syncs to update user subscription status in Supabase, ensuring backend data reflects current entitlements.",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Implement AI-Driven Workout Plan Generation",
+        "description": "Create a system for generating personalized workout plans based on user input.",
+        "details": "Implement a 2D human model for muscle group selection using react-native-body-highlight. Create an algorithm or integrate an AI service (e.g., OpenAI API) to generate workout plans based on selected muscle groups. Fetch exercise data and media from ExerciseDB API. Store generated plans in Supabase and implement caching for offline access.",
+        "testStrategy": "Unit test the plan generation algorithm. Integration test the full flow from muscle selection to plan generation. Verify that generated plans are appropriate for different user inputs and experience levels.",
+        "priority": "medium",
+        "dependencies": [
+          3,
+          5
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Implement 2D Human Model UI",
+            "description": "Design and develop a user interface that displays a 2D human body model, allowing for clear visualization of selectable muscle groups.",
+            "dependencies": [],
+            "details": "Use modern UI frameworks and reference fitness app UI inspirations to ensure an intuitive and visually appealing model. Ensure the model is interactive and ready for muscle group selection.",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Integrate Muscle Group Selection",
+            "description": "Enable users to select specific muscle groups on the 2D human model UI for targeted workout generation.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement interactive regions on the 2D model corresponding to major muscle groups. Capture user selections and prepare data for the workout generator.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Develop/Integrate AI Workout Generator",
+            "description": "Create or integrate an AI-driven system that generates personalized workout plans based on selected muscle groups.",
+            "dependencies": [
+              2
+            ],
+            "details": "Leverage AI algorithms or third-party services to generate effective and varied workout routines tailored to user input.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Connect to ExerciseDB API",
+            "description": "Establish a connection to the ExerciseDB API to retrieve exercise details and metadata for the generated workout plans.",
+            "dependencies": [
+              3
+            ],
+            "details": "Implement API calls to fetch exercise names, descriptions, and other relevant data needed for the workout plans.",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Fetch Exercise Media",
+            "description": "Retrieve and display exercise media (images/videos) from ExerciseDB or other sources to visually guide users through each exercise.",
+            "dependencies": [
+              4
+            ],
+            "details": "Ensure media is correctly mapped to each exercise and displayed within the workout plan UI for user reference.",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Store Plans in Supabase",
+            "description": "Implement functionality to save generated workout plans and user selections in Supabase for persistent storage and retrieval.",
+            "dependencies": [
+              3
+            ],
+            "details": "Design database schema in Supabase, handle authentication if needed, and ensure secure, efficient storage and retrieval of user data.",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Implement Offline Caching",
+            "description": "Enable offline access to workout plans and exercise media by implementing local caching strategies.",
+            "dependencies": [
+              5,
+              6
+            ],
+            "details": "Use local storage or service workers to cache essential data, ensuring the app remains functional without an internet connection.",
+            "status": "pending"
+          },
+          {
+            "id": 8,
+            "title": "Test Plan Quality",
+            "description": "Conduct thorough testing of the generated workout plans for accuracy, effectiveness, and user experience.",
+            "dependencies": [],
+            "details": "Gather feedback, perform usability tests, and refine the AI generator and UI based on test results to ensure high-quality workout plans.",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Develop Workout Execution and Logging Functionality",
+        "description": "Create screens and logic for users to execute and log their workouts.",
+        "details": "Implement workout execution screens showing exercise details, sets, reps, and rest times. Create a custom timer component for tracking exercise and rest periods. Implement a logging mechanism to mark sets as completed. Use Supabase real-time features to sync workout logs. Cache workout data locally using AsyncStorage for offline access.",
+        "testStrategy": "Test the workout flow, ensuring all components (timer, logging, instructions) work correctly. Verify that completed workouts are properly logged and synced with Supabase. Test offline functionality.",
+        "priority": "high",
+        "dependencies": [
+          6
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Workout Execution Screens",
+            "description": "Create user interface designs for the workout execution flow, ensuring accessibility, real-time feedback, and intuitive navigation.",
+            "dependencies": [],
+            "details": "Use design tools like Figma or Adobe XD to prototype screens. Prioritize high-contrast colors, adjustable fonts, and easy-to-tap elements for usability. Consider including features for different fitness levels and hands-free navigation options.",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement Exercise Details Display",
+            "description": "Develop the component that displays detailed information for each exercise during workout execution.",
+            "dependencies": [
+              1
+            ],
+            "details": "Show exercise name, instructions, images or videos, and any relevant tips. Ensure the UI is clear and accessible, supporting quick reference during workouts.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Create Timer Component",
+            "description": "Build a timer module for tracking exercise duration, rest periods, and intervals within the workout execution screens.",
+            "dependencies": [
+              1
+            ],
+            "details": "Timer should support start, pause, reset, and configurable durations. Integrate with the workout flow for seamless transitions between exercises and rest.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Implement Set/Reps Logging",
+            "description": "Enable users to log sets, reps, and weights for each exercise during workout execution.",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Provide intuitive input controls for quick data entry. Ensure logs are stored in local state and prepared for syncing with backend.",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Sync Logs with Supabase",
+            "description": "Integrate Supabase backend to store and retrieve workout logs, ensuring secure and reliable data management.",
+            "dependencies": [
+              4
+            ],
+            "details": "Implement API calls for creating, updating, and fetching logs. Handle authentication and error states. Ensure compliance with data privacy standards.",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Cache Data Offline",
+            "description": "Implement offline caching for workout data and logs to ensure uninterrupted user experience without network connectivity.",
+            "dependencies": [
+              5
+            ],
+            "details": "Use local storage or a database (e.g., SQLite, AsyncStorage) to cache data. Design logic for conflict resolution and data merging upon reconnection.",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Test Offline/Real-Time Sync",
+            "description": "Thoroughly test the app’s offline capabilities and real-time synchronization with Supabase to ensure data consistency and reliability.",
+            "dependencies": [],
+            "details": "Simulate network loss and recovery scenarios. Validate that logs entered offline sync correctly when online. Test for data conflicts and error handling.",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Implement Progress Tracking and Calendar View",
+        "description": "Create a calendar view to display user progress and workout history.",
+        "details": "Use a library like react-native-calendars to implement a calendar view. Fetch workout history from Supabase and display it on the calendar. Implement streak tracking and highlight completed workout days. Create a summary view for each day showing completed exercises and targeted muscle groups.",
+        "testStrategy": "Test the calendar view with various datasets, ensuring correct display of workout history and streaks. Verify that tapping on a day shows the correct workout summary.",
+        "priority": "medium",
+        "dependencies": [
+          7
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Integrate Apple Health for iOS",
+        "description": "Implement Apple Health integration to sync workout data and health metrics.",
+        "details": "Use react-native-health to integrate with Apple Health. Implement functionality to read and write workout data and health metrics (e.g., burned calories, exercise minutes). Ensure proper handling of permissions and data privacy. Sync this data with the user's profile in Supabase.",
+        "testStrategy": "Test Apple Health integration on iOS devices, verifying both read and write operations. Ensure proper error handling for cases where permissions are not granted.",
+        "priority": "low",
+        "dependencies": [
+          7
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Implement Superwall for Paywall Management",
+        "description": "Integrate Superwall SDK to manage and test different paywall designs.",
+        "details": "Install the Superwall SDK (superwall-react-native) and configure it with your Superwall account. Design multiple paywall variations using Superwall's web interface. Implement logic to trigger paywalls at appropriate points in the user journey. Use Superwall's analytics to track conversions and optimize paywall performance.",
+        "testStrategy": "Test different paywall triggers and designs. Verify that conversion events are properly tracked. Test the integration with RevenueCat to ensure smooth purchase flow.",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 11,
+        "title": "Implement Offline Mode and Data Syncing",
+        "description": "Ensure the app functions offline and syncs data when online.",
+        "details": "Implement a robust offline storage solution using AsyncStorage or a more advanced solution like WatermelonDB. Create a syncing mechanism to update local data with Supabase when the app comes online. Handle conflict resolution for data modified both locally and on the server. Implement background sync using react-native-background-fetch.",
+        "testStrategy": "Test the app's functionality in offline mode. Verify that data syncs correctly when the app regains internet connection. Test conflict resolution scenarios.",
+        "priority": "medium",
+        "dependencies": [
+          2,
+          7,
+          8
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Choose Offline Storage Solution",
+            "description": "Evaluate and select the most suitable offline storage technology (e.g., SQLite, Realm, local file storage) based on app requirements, data structure, and expected usage.",
+            "dependencies": [],
+            "details": "Consider factors such as data volume, access speed, platform compatibility, and ease of synchronization when making the decision.",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement Local Data Storage",
+            "description": "Set up and integrate the chosen offline storage solution into the application to enable local data persistence.",
+            "dependencies": [
+              1
+            ],
+            "details": "Develop data models, configure storage access, and ensure data can be read from and written to the local store.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Develop Sync Mechanism",
+            "description": "Design and implement a mechanism to synchronize local data with the remote server when connectivity is available.",
+            "dependencies": [
+              2
+            ],
+            "details": "Ensure the sync process is efficient, minimizes data loss, and handles partial syncs gracefully.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Handle Conflict Resolution",
+            "description": "Implement strategies to detect and resolve data conflicts that may arise during synchronization.",
+            "dependencies": [
+              3
+            ],
+            "details": "Use techniques such as timestamps, versioning, or user-driven resolution to manage conflicting updates.",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Implement Background Sync",
+            "description": "Enable background synchronization so that data can be synced automatically without user intervention.",
+            "dependencies": [
+              3,
+              4
+            ],
+            "details": "Leverage platform-specific background processing capabilities to trigger sync operations when connectivity is restored.",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Test Offline Scenarios",
+            "description": "Simulate offline conditions and verify that the application functions correctly without network connectivity.",
+            "dependencies": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "details": "Ensure data can be created, read, updated, and deleted locally, and that the user experience remains smooth.",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Test Sync on Reconnect",
+            "description": "Test the synchronization process when the device reconnects to the network after being offline.",
+            "dependencies": [],
+            "details": "Verify that all local changes are correctly synced to the server and that conflicts are resolved as expected.",
+            "status": "pending"
+          },
+          {
+            "id": 8,
+            "title": "Handle Edge Cases",
+            "description": "Identify and address edge cases such as partial sync failures, storage limits, and unexpected app terminations.",
+            "dependencies": [
+              6,
+              7
+            ],
+            "details": "Implement error handling, retries, and user notifications to ensure data integrity and reliability in all scenarios.",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Perform Security Audit and Optimization",
+        "description": "Conduct a security audit of the app and optimize performance.",
+        "details": "Perform a security audit of the entire application, focusing on authentication, data storage, and API communications. Implement secure storage for sensitive data using react-native-keychain. Optimize app performance by implementing lazy loading, reducing re-renders, and optimizing images. Use the Expo App Loading API to manage the app's loading state and improve perceived performance.",
+        "testStrategy": "Conduct penetration testing to identify security vulnerabilities. Use React Native performance profiling tools to measure and improve app performance. Test the app on various devices to ensure consistent performance.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Audit Authentication Flows",
+            "description": "Review and assess the security of all authentication mechanisms, including login, registration, password reset, and session management.",
+            "dependencies": [],
+            "details": "Identify potential vulnerabilities such as weak password policies, insecure session handling, and improper error messages.",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Audit Data Storage",
+            "description": "Evaluate how sensitive data is stored on the device and server, ensuring compliance with best practices for secure storage.",
+            "dependencies": [],
+            "details": "Check for issues like unencrypted data, improper use of local storage, and exposure of sensitive information.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Audit API Communications",
+            "description": "Analyze all API interactions for security flaws, including data transmission, authentication, and authorization.",
+            "dependencies": [],
+            "details": "Test for vulnerabilities such as insecure endpoints, lack of encryption, and improper access controls.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Implement Secure Storage",
+            "description": "Apply secure storage solutions for sensitive data, both on-device and server-side, based on audit findings.",
+            "dependencies": [
+              2
+            ],
+            "details": "Utilize encryption, secure key management, and platform-specific secure storage APIs.",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Optimize Performance: Lazy Loading and Re-renders",
+            "description": "Improve app performance by implementing lazy loading and minimizing unnecessary component re-renders.",
+            "dependencies": [],
+            "details": "Analyze component structure and data flows to identify optimization opportunities.",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Optimize Images",
+            "description": "Reduce image sizes and implement best practices for image delivery to enhance app performance.",
+            "dependencies": [],
+            "details": "Use image compression, responsive images, and appropriate formats.",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Implement App Loading Improvements",
+            "description": "Enhance the app's loading experience by optimizing initial load times and perceived performance.",
+            "dependencies": [
+              5,
+              6
+            ],
+            "details": "Apply techniques such as code splitting, skeleton screens, and prefetching.",
+            "status": "pending"
+          },
+          {
+            "id": 8,
+            "title": "Conduct Penetration Testing",
+            "description": "Perform penetration testing to identify and exploit vulnerabilities in authentication, data storage, and API communications.",
+            "dependencies": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "details": "Use both automated tools and manual testing to simulate real-world attacks.",
+            "status": "pending"
+          },
+          {
+            "id": 9,
+            "title": "Profile App Performance",
+            "description": "Measure and analyze the app's runtime performance to identify bottlenecks and validate optimization efforts.",
+            "dependencies": [
+              5,
+              6,
+              7
+            ],
+            "details": "Utilize profiling tools to monitor CPU, memory, and rendering performance.",
+            "status": "pending"
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "created": "2025-06-18T18:39:19.290Z",
+      "updated": "2025-06-18T19:42:23.798Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

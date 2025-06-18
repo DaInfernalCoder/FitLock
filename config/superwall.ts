@@ -1,4 +1,8 @@
-import { SuperwallOptions, LogLevel, LogScope } from '@superwall/react-native-superwall';
+import {
+  SuperwallOptions,
+  LogLevel,
+  LogScope,
+} from '@superwall/react-native-superwall';
 
 export const SUPERWALL_TRIGGERS = {
   ONBOARDING: 'campaign_trigger',
@@ -8,7 +12,7 @@ export const SUPERWALL_TRIGGERS = {
 
 export const createSuperwallConfig = () => {
   const options = new SuperwallOptions();
-  
+
   // Enable debug logging in development
   if (__DEV__) {
     options.logging.level = LogLevel.Debug;
@@ -20,4 +24,4 @@ export const createSuperwallConfig = () => {
   }
 
   return options;
-}; 
+};

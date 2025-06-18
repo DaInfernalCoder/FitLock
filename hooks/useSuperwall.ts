@@ -30,7 +30,7 @@ export function useSuperwall() {
 
   const showPaywall = async (triggerId: string) => {
     if (isLoading || Platform.OS === 'web') return;
-    
+
     try {
       await superwallService.presentPaywall(triggerId);
       // Refresh subscription status after paywall interaction
@@ -46,4 +46,4 @@ export function useSuperwall() {
     showPaywall,
     checkSubscription,
   };
-} 
+}

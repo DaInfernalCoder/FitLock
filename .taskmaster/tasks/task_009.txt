@@ -1,0 +1,11 @@
+# Task ID: 9
+# Title: Integrate Apple Health for iOS
+# Status: pending
+# Dependencies: 7
+# Priority: low
+# Description: Implement Apple Health integration to sync workout data and health metrics.
+# Details:
+Use react-native-health to integrate with Apple Health. Implement functionality to read and write workout data and health metrics (e.g., burned calories, exercise minutes). Ensure proper handling of permissions and data privacy. Sync this data with the user's profile in Supabase.
+
+# Test Strategy:
+Test Apple Health integration on iOS devices, verifying both read and write operations. Ensure proper error handling for cases where permissions are not granted.

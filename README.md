@@ -6,25 +6,27 @@ This free boilerplate is sponsored by [post bridge](https://post-bridge.com) - a
 
 ## Get started
 
-1. Clone this repository 
+1. Clone this repository
 
 2. Install dependencies
 
    ```bash
    npm install
    ```
-Or 
 
-  ```bash
-   npx expo install
-   ```
+   Or
+
+```bash
+ npx expo install
+```
 
 3. Start the app
 
    ```bash
     npx expo start
    ```
--- you will need to make a development build or run in development mode as Superwall does not work in Expo GO
+
+   -- you will need to make a development build or run in development mode as Superwall does not work in Expo GO
 
 In the output, you'll find options to open the app in a
 

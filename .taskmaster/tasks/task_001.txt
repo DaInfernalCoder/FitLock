@@ -1,0 +1,11 @@
+# Task ID: 1
+# Title: Setup React Native Project with Expo
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Initialize the React Native project using Expo CLI and set up the basic project structure.
+# Details:
+Use Expo CLI to create a new React Native project. Set up the project structure including folders for components, screens, services, and utils. Initialize Git repository and create a .gitignore file. Install essential dependencies such as react-navigation (v6.x.x) for routing, and @react-native-async-storage/async-storage for local storage. Configure ESLint and Prettier for code consistency.
+
+# Test Strategy:
+Verify project setup by running the app in Expo Go on both iOS and Android simulators. Ensure all dependencies are correctly installed and the app builds without errors.

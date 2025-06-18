@@ -17,13 +17,17 @@ export default function FeaturesScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView 
-          style={styles.scroll} 
+        <ScrollView
+          style={styles.scroll}
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.header}>
-            <MaterialCommunityIcons name="check-decagram" size={48} color="#0A7EA4" />
+            <MaterialCommunityIcons
+              name="check-decagram"
+              size={48}
+              color="#0A7EA4"
+            />
             <ThemedText type="title" style={styles.title}>
               Ready to Use
             </ThemedText>
@@ -60,7 +64,11 @@ export default function FeaturesScreen() {
   );
 }
 
-function Feature({ icon, title, description }: { 
+function Feature({
+  icon,
+  title,
+  description,
+}: {
   icon: keyof typeof IconType.glyphMap;
   title: string;
   description: string;
@@ -75,7 +83,9 @@ function Feature({ icon, title, description }: {
           <ThemedText type="defaultSemiBold" style={styles.featureTitle}>
             {title}
           </ThemedText>
-          <ThemedText style={styles.featureDescription}>{description}</ThemedText>
+          <ThemedText style={styles.featureDescription}>
+            {description}
+          </ThemedText>
         </View>
       </View>
     </View>
@@ -153,4 +163,4 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
   },
-}); 
+});

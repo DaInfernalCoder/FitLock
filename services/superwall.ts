@@ -1,5 +1,7 @@
 import { Platform } from 'react-native';
-import Superwall, { SubscriptionStatus } from '@superwall/react-native-superwall';
+import Superwall, {
+  SubscriptionStatus,
+} from '@superwall/react-native-superwall';
 import { createSuperwallConfig } from '@/config/superwall';
 
 class SuperwallService {
@@ -61,4 +63,4 @@ class SuperwallService {
   }
 }
 
-export const superwallService = SuperwallService.getInstance(); 
+export const superwallService = SuperwallService.getInstance();

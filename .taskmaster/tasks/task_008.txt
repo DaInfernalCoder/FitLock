@@ -1,0 +1,11 @@
+# Task ID: 8
+# Title: Implement Progress Tracking and Calendar View
+# Status: pending
+# Dependencies: 7
+# Priority: medium
+# Description: Create a calendar view to display user progress and workout history.
+# Details:
+Use a library like react-native-calendars to implement a calendar view. Fetch workout history from Supabase and display it on the calendar. Implement streak tracking and highlight completed workout days. Create a summary view for each day showing completed exercises and targeted muscle groups.
+
+# Test Strategy:
+Test the calendar view with various datasets, ensuring correct display of workout history and streaks. Verify that tapping on a day shows the correct workout summary.

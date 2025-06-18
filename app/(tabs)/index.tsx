@@ -46,6 +46,18 @@ export default function HomeScreen() {
     );
   };
 
+  const handleGoToAuth = () => {
+    console.log('🔍 Attempting to navigate to auth screen...');
+    try {
+      router.push('/auth/sign-in');
+      console.log('✅ Navigation call completed');
+    } catch (error) {
+      console.error('❌ Navigation failed:', error);
+      // Try alternative navigation
+      router.replace('/auth/sign-in');
+    }
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -112,6 +124,15 @@ export default function HomeScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity
+          style={[styles.button, styles.authButton]}
+          onPress={handleGoToAuth}
+        >
+          <ThemedText type="defaultSemiBold" style={styles.buttonText}>
+            🔐 Go to Sign In
+          </ThemedText>
+        </TouchableOpacity>
+
+        <TouchableOpacity
           style={[styles.button, styles.secondaryButton]}
           onPress={handleRestartOnboarding}
         >
@@ -156,6 +177,9 @@ const styles = StyleSheet.create({
   },
   testButton: {
     backgroundColor: '#10B981',
+  },
+  authButton: {
+    backgroundColor: '#8B5CF6',
   },
   secondaryButton: {
     backgroundColor: '#0A7EA420',

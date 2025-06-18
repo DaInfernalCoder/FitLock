@@ -59,3 +59,6 @@ dev-debug.log
 *.sln
 *.sw?
 # OS specific
+
+# YoYo AI version control directory
+.yoyo/

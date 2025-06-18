@@ -1,0 +1,129 @@
+# LockFit – Concise Functional Requirements
+
+## 1. Overview
+LockFit is a mobile application designed in react native to help users stay committed to daily workouts by blocking access to specified phone apps until a workout is completed. The app leverages user motivation by restricting distracting apps (like TikTok, Instagram, etc.) until the user logs a workout. It also integrates a subscription model (via RevenueCat) for premium features such as AI-generated multi-day workout plans.
+
+## 2. Key Functionalities
+
+1. **Phone Blocking Mechanism**  
+   - Block selected distracting apps until the user completes the daily workout.  
+   - Ensure this blocking is toggled/removed after the user logs their workout for the day.
+
+2. **User Onboarding & Data Collection**  
+   - Screens that gather:  
+     - Workout experience level.  
+     - Referral information (where the user discovered LockFit).  
+     - Phone number and email.  
+   - A secure sign-in flow for each user; Supabase is envisioned to handle authentication and data management.
+
+3. **AI-Driven Workout Plan Generation**  
+   - Users can tap on a 2D human model to select target muscle groups with react-native-body-highlight.  
+   - Automatically create a 7-day plan (or custom plan) with sets, reps, rest times, and instructions.  
+   - Pull workout demonstration media (gifs, images) from an external API like ExerciseDB.
+   - Possible future improvement: integrate an AI service to refine workout plan suggestions.
+
+4. **Workout Execution & Logging**  
+   - Display a built-in timer (or rest timer) and recommended number of reps/sets.  
+   - Provide instructions or animated gifs for each exercise.  
+   - Users can log each workout, marking sets as completed.  
+   - Maintain a history log in Supabase to track user progress.
+
+5. **Payment & Subscription**  
+   - Integrate RevenueCat to manage in-app subscriptions.  
+   - Users receive advanced features (e.g., AI-based plans, phone blocking toggles) after subscribing.  
+   - Single subscription plan or tiered approach can be decided during app design.
+
+6. **Progress Tracking**  
+   - Calendar view for progress at a glance (e.g., streaks, days completed, muscle groups targeted).  
+   - Integration with Apple Health to sync workout data and user health metrics (e.g., burned calories, exercise minutes).
+
+7. **Superwall for Paywalls**  
+   - Implement Superwall to test different paywall designs and conversions.  
+   - Experiment with upsell messages and subscription promotions within the app flow.
+
+## 3. Technical Considerations
+
+1. **Frontend**  
+   - React Native (Expo) for cross-platform deployment (iOS/Android).  
+   - 2D human body selection (custom or third-party library) for muscle targeting.
+
+2. **Backend**  
+   - Supabase for authentication, database (storing user profiles, workout logs, subscription status).  
+   - Potential usage of real-time features for logs or friend/community aspects (future expansions).
+
+3. **Payments**  
+   - RevenueCat for managing user subscriptions; handles cross-platform receipts and subscription statuses.
+
+4. **Phone Blocking**  
+   - Rely on OS-level capabilities (if accessible) or integrated solution that intercepts usage of designated apps.  
+   - Must be implemented in a way that is user-permitted and doesn’t conflict with store guidelines.
+
+5. **APIs & Integrations**  
+   - External exercise database (to fetch instructions and animated gifs).  
+   - Apple Health for iOS data syncing.  
+   - AI API for workout plan generation (potential future extension).
+
+## 4. User Flows
+
+1. **Welcome & Sign Up**  
+   - User is greeted → chooses sign-in (with phone/email or social).  
+   - Provides details: workout experience, contact info, etc.
+
+2. **Subscription / Free Trial**  
+   - App prompts for subscription (via RevenueCat + Superwall paywall display).  
+   - User either subscribes or continues with limited features (if free tier exists).
+
+3. **Day Start (Phone Block)**  
+   - Before usage of certain apps, LockFit checks if today’s workout is complete.  
+   - If not, it locks or restricts user from launching problem apps until the workout is completed.
+
+4. **Customize Workout Plan**  
+   - User selects muscle groups on the 2D model → AI or custom data suggests exercises.  
+   - Plan outlines sets, reps, rest timers, media instructions.
+
+5. **Workout Completion**  
+   - In-progress workout timers, rest breaks, and instructions.  
+   - User logs completion → phone blocking is lifted for the day → progress updated on the calendar.
+
+6. **Progress Check**  
+   - Calendar and stats screen show each day’s streak, muscle group logs, or Apple Health integration data.
+
+## 5. Non-Functional Requirements
+
+1. **Performance & Responsiveness**  
+   - App should load within ~3 seconds on average devices.  
+   - Workouts and data must be cached locally to handle offline usage scenarios.
+
+2. **Security & Privacy**  
+   - User authentication must be secure (Supabase).  
+   - Adhere to data privacy standards, especially regarding health data and personal information.
+
+3. **Scalability**  
+   - Supabase and the AI workout generation must handle growing user bases (1000s to potential 100,000+ users).
+
+4. **Reliability**  
+   - Phone blocking feature must work consistently without causing drastic phone usage issues outside the intended scope.
+
+5. **Maintainability**  
+   - React Native/Expo codebase well-structured to simplify updates and expansions.
+
+---
+
+## 6. Future Enhancements (Optional Ideas)
+
+1. Social/Community Features:  
+   - Sharing progress, competing with friends.
+
+2. Advanced AI Plans:  
+   - Machine-learning tailored routines based on user performance over time.
+
+3. Android & iOS Differences:  
+   - Deeper integration on iOS with Apple Health.  
+   - Evaluate custom solutions for Android’s phone blocking to remain store-compliant.
+
+4. Wearable Integration:  
+   - Sync with Apple Watch, Wear OS devices, or dedicated fitness trackers.
+
+---
+
+**This document outlines the core features and functionalities needed for LockFit to deliver on its promise: a no-excuses workout solution that temporarily 'locks' distracting apps until the user completes their daily workout.**  
